@@ -1,5 +1,5 @@
-FROM elastic/elasticsearch:6.2.3
-MAINTAINER dazuimao1990 <guox@goodrain.com>
+FROM elastic/elasticsearch:6.6.0
+MAINTAINER Nick Zhao
 
 RUN yum makecache fast && \
     yum install bind-utils -y && \
@@ -7,7 +7,7 @@ RUN yum makecache fast && \
     rm -rf /var/cache/yum
 COPY docker-entrypoint.sh /
 COPY elasticsearch.yml /usr/share/elasticsearch/config/elasticsearch.yml
-EXPOSE 9200 9300
+EXPOSE 9200 9300/tcp
 VOLUME ["/usr/share/elasticsearch/data"]
 ENTRYPOINT ["/docker-entrypoint.sh"]
 CMD ["/usr/local/bin/docker-entrypoint.sh","eswrapper"]
