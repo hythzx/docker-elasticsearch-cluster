@@ -9,7 +9,6 @@ RUN yum makecache fast && \
     rm -rf /var/cache/yum
 COPY docker-entrypoint.sh /
 COPY elasticsearch.yml /usr/share/elasticsearch/config/elasticsearch.yml
-COPY jvm.options /usr/share/elasticsearch/config/jvm.options
 EXPOSE 9200 9300/tcp
 VOLUME ["/usr/share/elasticsearch/data"]
 ENTRYPOINT ["/docker-entrypoint.sh"]
